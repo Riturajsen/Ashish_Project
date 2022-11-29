@@ -32,6 +32,7 @@ def data():
         l = [a, n, b]
         w.writerow(l)
     f.close()
+    app()
 
 
 def display():
