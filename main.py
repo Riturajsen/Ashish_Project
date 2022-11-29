@@ -1,13 +1,24 @@
 import csv
 import sys
+import pandas as pd
 
 
 def heading():
     f = open("bank.csv", "a", newline='')
-    w = csv.writer(f)
-    l = [" ACCOUNT NO ", " NAME ", " BALANCE "]
-    w.writerow(l)
-    f.close()
+    results = pd.read_csv('bank.csv')
+    row = len(results)
+    # print(row)
+    if row > 0:
+        print("Already a Heading is there ")
+        f.close()
+        app()
+
+
+    else:
+        w = csv.writer(f)
+        l = [" ACCOUNT NO ", " NAME ", " BALANCE "]
+        w.writerow(l)
+        f.close()
 
 
 def data():
@@ -50,7 +61,7 @@ def app():
     elif ch == 3:
         display()
     elif ch == 4:
-        print("THANK YOU "+ name+" For using This App \n Regards Ashish Singh")
+        print("THANK YOU " + name + " For using This App \n Regards Ashish Singh")
         sys.exit()
 
 
