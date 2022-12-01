@@ -8,17 +8,18 @@ def heading():
     results = pd.read_csv('bank.csv')
     row = len(results)
     # print(row)
-    if row > 0:
+    if row >= 1:
         print("Already a Heading is there ")
         f.close()
         app()
 
-
     else:
+        f = open("bank.csv", "a", newline='')
         w = csv.writer(f)
         l = [" ACCOUNT NO ", " NAME ", " BALANCE "]
         w.writerow(l)
         f.close()
+        app()
 
 
 def data():
@@ -31,6 +32,7 @@ def data():
         b = int(input("Enter the balance amt. : "))
         l = [a, n, b]
         w.writerow(l)
+        print("Account added Enter the next details")
     f.close()
     app()
 
@@ -47,13 +49,14 @@ def display():
 def app():
     # main program
 
-    print("WELCOME " + name.upper() + " BANK MANAGEMENT SYSTEM")
+    print("WELCOME " + name.upper() + " TO BANK MANAGEMENT SYSTEM")
     print("\n MENU \n")
     print("1-FIELDNAMES (Don't Run Multiple Times just For heading )")
     print("2-Input & Write Data")
     print("3-DISPLAY")
     print("4-EXIT")
     print("\n This App is Developed By Ashish Singh")
+    # input will be held in ch
     ch = int(input("\nEnter Your Choice : "))
     if ch == 1:
         heading()
@@ -64,8 +67,11 @@ def app():
     elif ch == 4:
         print("THANK YOU " + name + " For using This App \n Regards Ashish Singh")
         sys.exit()
+    else:
+        print("Enter a Correct Value")
 
 
 while True:
     name = input("Enter Your Name : ")
+
     app()
